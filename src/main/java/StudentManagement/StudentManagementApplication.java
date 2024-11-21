@@ -1,4 +1,4 @@
-package StudentManegement;
+package StudentManagement;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class StudentManegementApplication {
+public class StudentManagementApplication {
 
   @Autowired
   private StudentRepository repository;
   @Autowired
-  private StudentCoursRepository repository2;
+  private StudentCourseRepository repositoryStudentCourse;
 
 
-  public StudentManegementApplication() {
+  public StudentManagementApplication() {
 
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(StudentManegementApplication.class, args);
+    SpringApplication.run(StudentManagementApplication.class, args);
   }
 
   @GetMapping("/studentList")
@@ -30,9 +30,9 @@ public class StudentManegementApplication {
     return repository.searchStudent();
   }
 
-  @GetMapping("/studentcoursList")
-  public List<StudentCours> getStudentCoursList() {
-    return repository2.searchStudentCours();
+  @GetMapping("/studentcourseList")
+  public List<StudentCourse> getStudentCourseList() {
+    return repositoryStudentCourse.searchStudentCourses();
 
 }
 }

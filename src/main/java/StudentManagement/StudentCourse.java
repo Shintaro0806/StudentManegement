@@ -1,4 +1,4 @@
-package StudentManegement;
+package StudentManagement;
 
 
 import java.time.LocalDate;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class StudentCours {
+public class StudentCourse {
 
   private String courseId;
   private String studentId;
