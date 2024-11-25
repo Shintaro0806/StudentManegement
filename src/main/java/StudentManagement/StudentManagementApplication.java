@@ -1,5 +1,9 @@
 package StudentManagement;
 
+import StudentManagement.data.Student;
+import StudentManagement.data.StudentCourse;
+import StudentManagement.repository.StudentCourseRepository;
+import StudentManagement.repository.StudentRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -11,12 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentManagementApplication {
 
-  @Autowired
-  private StudentRepository repository;
-  @Autowired
-  private StudentCourseRepository repositoryStudentCourse;
-
-
   public StudentManagementApplication() {
 
   }
@@ -24,18 +22,9 @@ public class StudentManagementApplication {
   public static void main(String[] args) {
     SpringApplication.run(StudentManagementApplication.class, args);
   }
-
-  @GetMapping("/studentList")
-  public List<Student> getStudentList() {
-    return repository.searchStudent();
-  }
-
-  @GetMapping("/studentcourseList")
-  public List<StudentCourse> getStudentCourseList() {
-    return repositoryStudentCourse.searchStudentCourses();
-
 }
-}
+
+
 
 
 
