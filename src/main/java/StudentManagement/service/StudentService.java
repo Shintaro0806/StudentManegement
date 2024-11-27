@@ -16,21 +16,24 @@ public class StudentService {
   private StudentCourseRepository repository2;
 
   @Autowired
-  public StudentService(StudentRepository repository) {
+  public StudentService(StudentRepository repository, StudentCourseRepository repository2) {
     this.repository = repository;
+    this.repository2 = repository2;
   }
 
-  @Autowired
-  public StudentService(StudentCourseRepository repository) {
-    this.repository2 = repository;
-  }
+
+
 
   public List<Student> searchStudentList() {
-    return repository.searchStudent();
+
+    return repository.searchStudent().stream()
+        .filter(student -> student.getAge() >= 20 && student.getAge() <= 29)
+        .toList();
   }
 
   public List<StudentCourse> searchStudentCourseList() {
-    return repository2.searchStudentCourses();
+    return repository2.searchStudentCourses().stream()
+        .filter(course -> course.getCoursName().contains("基礎")).toList();
 
   }
 }
