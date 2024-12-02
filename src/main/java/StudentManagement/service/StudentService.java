@@ -27,13 +27,13 @@ public class StudentService {
   public List<Student> searchStudentList() {
 
     return repository.searchStudent().stream()
-        .filter(student -> student.getAge() >= 20 && student.getAge() <= 29)
+        .filter(student -> student.getAge() >= 30 && student.getAge() <= 39)
         .toList();
   }
 
   public List<StudentCourse> searchStudentCourseList() {
     return repository2.searchStudentCourses().stream()
-        .filter(course -> course.getCoursName().contains("基礎")).toList();
+        .filter(course -> course.getCoursName().contains("Javaコース")).toList();
 
   }
 }
