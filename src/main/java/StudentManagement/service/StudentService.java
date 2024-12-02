@@ -27,7 +27,7 @@ public class StudentService {
   public List<Student> searchStudentList() {
 
     return repository.searchStudent().stream()
-        .filter(student -> student.getAge() >= 20 && student.getAge() <= 29)
+        .filter(student -> student.getAge() >= 19 && student.getAge() <= 29)
         .toList();
   }
 
