@@ -19,3 +19,4 @@ public class Student {
   private String remark;
   private boolean isDaleted;
 }
+//生徒情報
