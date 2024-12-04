@@ -1,5 +1,5 @@
 package StudentManagement.data;
-
+//生徒情報
 
 import lombok.Getter;
 import lombok.Setter;
