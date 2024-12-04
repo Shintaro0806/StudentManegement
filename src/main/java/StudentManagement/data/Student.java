@@ -1,5 +1,5 @@
 package StudentManagement.data;
-//生徒情報
+
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,3 +19,4 @@ public class Student {
   private String remark;
   private boolean isDaleted;
 }
+//生徒情報
