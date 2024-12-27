@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -13,16 +14,16 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface StudentRepository {
 
-  @Select("SELECT * FROM students" )
+  @Select("SELECT * FROM students WHERE is_deleted = 0" )
   List<Student> search();
 
-  @Select("SELECT * FROM students WHERE student_id = #{studentId}" )
+  @Select("SELECT * FROM students WHERE student_id = #{studentId} AND is_deleted = 0" )
   Student searchStudent(String studentId);
 
   @Select("SELECT * FROM students_courses" )
   List<StudentCourse> searchStudentCoursesList();
 
-  @Select("SELECT * FROM students_courses WHERE student_id = #{studentId} ")
+  @Select("SELECT * FROM students_courses WHERE student_id = #{studentId}")
   List<StudentCourse> searchStudentCourses(String studentId);
 
 
@@ -36,14 +37,17 @@ public interface StudentRepository {
   @Options(useGeneratedKeys = true, keyProperty = "courseId")
   void registerStudentCourses(StudentCourse studentCourse);
 
-  @Update("UPDATE students SET(fullname = #{fullname}, hurigana = #{hurigana},nickname = #{nickname},"
-      + "email = #{email},address = #{address},age = #{age},gender = #{gender},remark = #{remark},is_deleted = #{isDeleted}) WHERE student_id = #{studentId}")
+  @Update("UPDATE students SET fullname = #{fullname}, hurigana = #{hurigana},nickname = #{nickname},"
+      + "email = #{email},address = #{address},age = #{age},gender = #{gender},remark = #{remark},is_deleted = #{isDeleted} WHERE student_id = #{studentId}")
 
   void updateStudent(Student student);
 
-  @Update("UPDATE students_courses SET(course_name = #{courseName}) WHERE student_id = #{studentId}" )
+  @Update("UPDATE students_courses SET course_name = #{courseName} WHERE student_id = #{studentId}" )
 
   void updateStudentCourses(StudentCourse studentCourse);
+
+  @Update("UPDATE students SET is_deleted = true WHERE student_id = #{studentId}")
+  void logicalDeleteStudent(@Param("studentId") String studentId);
 
 
 }

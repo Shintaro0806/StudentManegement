@@ -3,6 +3,7 @@ package StudentManagement.data;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Getter
 @Setter
@@ -17,6 +18,6 @@ public class Student {
   private int age;
   private String gender;
   private String remark;
-  private boolean isDaleted;
+  private boolean isDeleted;
 }
-//生徒情報
+
