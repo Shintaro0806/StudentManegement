@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>受講生情報一覧</title>
+</head>
+<body>
+<h1>受講生一覧</h1>
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>名前</th>
+    <th>カナ名</th>
+    <th>ニックネーム</th>
+    <th>メールアドレス</th>
+    <th>地域</th>
+    <th>年齢</th>
+    <th>性別</th>
+    <th>備考</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="studentDetail : ${studentList}">
+    <td th:text="${studentDetail.student.studentId}">S001</td>
+    <td><a href="/studentList" th:href="@{/student/{id}(id=${studentDetail.student.studentId})}" th:text="${studentDetail.student.fullname}">山田太郎</a>
+    </td>
+    <td th:text="${studentDetail.student.hurigana}">やまだたろう</td>
+    <td th:text="${studentDetail.student.nickname}">たろちゃん</td>
+    <td th:text="${studentDetail.student.email}">taro.yamada@example.com</td>
+    <td th:text="${studentDetail.student.address}">東京都新宿区1-2-3</td>
+    <td th:text="${studentDetail.student.age}">20</td>
+    <td th:text="${studentDetail.student.gender}">男性</td>
+    <td th:text="${studentDetail.student.remark}">特になし</td>
+    <td th:text="${studentDetail != null && studentDetail.student != null && studentDetail.student.isDeleted != null ? studentDetail.student.isDeleted : '未登録'}">未登録</td>
+
+
+  </tbody>
+</table>
+</body>
+</html>
