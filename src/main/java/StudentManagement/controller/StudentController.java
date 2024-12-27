@@ -6,8 +6,13 @@ import StudentManagement.data.Student;
 import StudentManagement.data.StudentCourse;
 import StudentManagement.domain.StudentDetail;
 import StudentManagement.service.StudentService;
+ 課題提出用
 import java.util.Arrays;
+
+import java.util.ArrayList;
+master
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,12 +36,19 @@ public class StudentController {
   }
 
   @GetMapping("/studentList")
+ 課題提出用
   public String getStudentList(Model model) {
     List<Student> students = service.searchStudentList();
     List<StudentCourse> studentCourses = service.searchStudentCourseList();
 
     model.addAttribute("studentList", converter.convertStudentDetails(students,studentCourses));
     return "studentList";
+  public List<StudentDetail> getStudentList() {
+    List<Student> students = service.searchStudentList();
+    List<StudentCourse> studentCourses = service.searchStudentCourseList();
+
+    return converter.convertStudentDetails(students, studentCourses);
+master
   }
 
 

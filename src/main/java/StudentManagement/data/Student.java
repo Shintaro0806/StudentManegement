@@ -18,6 +18,10 @@ public class Student {
   private int age;
   private String gender;
   private String remark;
+ 課題提出用
   private boolean isDeleted;
+
+  private boolean isDaleted;
+ master
 }
 
