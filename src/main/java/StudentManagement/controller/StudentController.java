@@ -88,11 +88,13 @@ master
     return "redirect:/studentList";
   }
 
-  @DeleteMapping("/deleteStudent/{id}")
+  @PostMapping("/deleteStudent/{id}")
   public String deleteStudent(@PathVariable String id) {
     service.logicalDeleteStudent(id);
     return "redirect:/studentList";
   }
+
+
 
 }
 

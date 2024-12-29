@@ -32,9 +32,8 @@
     <td th:text="${studentDetail.student.age}">20</td>
     <td th:text="${studentDetail.student.gender}">男性</td>
     <td th:text="${studentDetail.student.remark}">特になし</td>
-    <td th:text="${studentDetail != null && studentDetail.student != null && studentDetail.student.isDeleted != null ? studentDetail.student.isDeleted : '未登録'}">未登録</td>
-
-
+    <td th:text="${studentDetail?.student?.isDeleted != null ? studentDetail.student.isDeleted : '未登録'}">未登録</td>
+  </tr>
   </tbody>
 </table>
 </body>

@@ -17,8 +17,8 @@ public interface StudentRepository {
   @Select("SELECT * FROM students WHERE is_deleted = 0" )
   List<Student> search();
 
-  @Select("SELECT * FROM students WHERE student_id = #{studentId} AND is_deleted = 0" )
-  Student searchStudent(String studentId);
+  @Select("SELECT * FROM students WHERE student_id = #{studentId} AND is_deleted = 0")
+  Student searchStudent(@Param("studentId") String studentId);
 
   @Select("SELECT * FROM students_courses" )
   List<StudentCourse> searchStudentCoursesList();
