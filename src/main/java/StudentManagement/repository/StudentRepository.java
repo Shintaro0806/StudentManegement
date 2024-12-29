@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Update;
 
 
 @Mapper
-public interface StudentRepository {//
+public interface StudentRepository {
 
   @Select("SELECT * FROM students WHERE is_deleted = 0" )
   List<Student> search();
