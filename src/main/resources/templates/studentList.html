@@ -18,6 +18,7 @@
     <th>年齢</th>
     <th>性別</th>
     <th>備考</th>
+    <th>キャンセル</th>
   </tr>
   </thead>
   <tbody>
@@ -32,9 +33,11 @@
     <td th:text="${studentDetail.student.age}">20</td>
     <td th:text="${studentDetail.student.gender}">男性</td>
     <td th:text="${studentDetail.student.remark}">特になし</td>
-    <td th:text="${studentDetail != null && studentDetail.student != null && studentDetail.student.isDeleted != null ? studentDetail.student.isDeleted : '未登録'}">未登録</td>
+    <td>
+      <input type="checkbox" th:checked="${studentDetail.student.isDeleted}" />
+    </td>
 
-
+  </tr>
   </tbody>
 </table>
 </body>
