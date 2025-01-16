@@ -14,11 +14,11 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface StudentRepository {
 
-  @Select("SELECT * FROM students WHERE is_deleted = 0" )
+  @Select("SELECT * FROM students WHERE is_deleted = false" )
   List<Student> search();
 
-  @Select("SELECT * FROM students WHERE student_id = #{studentId} AND is_deleted = 0" )
-  Student searchStudent(String studentId);
+  @Select("SELECT * FROM students WHERE student_id = #{studentId}")
+  Student searchStudent(@Param("studentId") String studentId);
 
   @Select("SELECT * FROM students_courses" )
   List<StudentCourse> searchStudentCoursesList();
@@ -45,9 +45,6 @@ public interface StudentRepository {
   @Update("UPDATE students_courses SET course_name = #{courseName} WHERE student_id = #{studentId}" )
 
   void updateStudentCourses(StudentCourse studentCourse);
-
-  @Update("UPDATE students SET is_deleted = true WHERE student_id = #{studentId}")
-  void logicalDeleteStudent(@Param("studentId") String studentId);
 
 
 }
