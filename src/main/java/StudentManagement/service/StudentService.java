@@ -31,6 +31,7 @@ public class StudentService {
   /**
    * 受講生詳細の一覧検索です。
    * 全権検索を行うので、条件指定は行いません。
+   *
    * @return　受講生一覧（全件）
    */
   public List<StudentDetail> searchStudentList() {
@@ -42,6 +43,7 @@ public class StudentService {
   /**
    * 受講生詳細検索です。
    * IDに紐づく受講生情報を取得した後、その受講生に紐づく受講生コース情報を取得して設定します。
+   *
    * @param id　受講生ID
    * @return 受講生
    */
