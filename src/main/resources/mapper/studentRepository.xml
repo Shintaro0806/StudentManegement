@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="StudentManagement.repository.StudentRepository.java">
+
+  <!-- 受講生の全体検索 -->
+<select id="search" resultType="StudentManagement.data.Student">
+  SELECT *
+  FROM students
+</select>
+
+  <!-- 受講生の検索 -->
+  <select id="searchStudent" resultType="StudentManagement.data.Student">
+    SELECT *
+    FROM students
+    WHERE id = #{id}
+  </select>
+
+  <!-- 受講生のコース情報の検索 -->
+  <select id="searchStudentCourseList" resultType="StudentManagement.data.Student">
+  SELECT *
+  FROM students_courses
+  </select>
+
+  <!-- 受講生IDに紐づく受講生コース情報の検索 -->
+  <select id="searchStudentCourse" resultType="StudentManagement.data.Student">
+  SELECT *
+  FROM students_courses
+  WHERE student_id = #{studentId}
+  </select>
+
+  <!-- 受講生の新規登録 -->
+  <insert id="registerStudent" parameterType="StudentManagement.data.Student" useGeneratedKeys="true" keyProperty="studentId">
+    INSERT INTO students (fullname, hurigana, nickname, email, address, age, gender, remark, is_deleted)
+    VALUES (#{fullname}, #{hurigana}, #{nickname}, #{email}, #{address}, #{age}, #{gender}, #{remark}, false)
+  </insert>
+
+  <!-- 受講生コース情報の新規登録 -->
+  <insert id="registerStudentCourse" parameterType="StudentManagement.data.Student" useGeneratedKeys="true" keyProperty="courseId">
+    INSERT INTO students_courses (course_id, student_id, course_name, start_date, expected_date)
+    VALUES (#{courseId}, #{studentId}, #{courseName}, #{startDate}, #{expectedDate})
+  </insert>
+
+  <!-- 受講生の更新 -->
+  <update id="updateStudent" parameterType="StudentManagement.data.Student">
+    UPDATE students
+    SET fullname = #{fullname},
+    hurigana = #{hurigana},
+    nickname = #{nickname},
+    email = #{email},
+    address = #{address},
+    age = #{age},
+    gender = #{gender},
+    remark = #{remark},
+    is_deleted = #{isDeleted}
+    WHERE student_id = #{studentId}
+  </update>
+
+  <!-- 受講生コース情報のコース名の更新 -->
+  <update id="updateStudentCourse" parameterType="StudentManagement.data.Student">
+    UPDATE students_courses
+    SET course_name = #{courseName}
+    WHERE student_id = #{studentId}
+  </update>
+</mapper>

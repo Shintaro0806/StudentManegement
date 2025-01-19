@@ -49,7 +49,7 @@ public class StudentController {
    * @return 受講生
    */
   @GetMapping("/student/{id}")
-  public StudentDetail getStudent(@PathVariable String id) {
+  public StudentDetail getStudent(@PathVariable @Size(min = 1, max = 3) String id) {
     return service.searchStudent(id);
   }
 
