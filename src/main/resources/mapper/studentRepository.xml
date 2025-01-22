@@ -3,10 +3,10 @@
 <mapper namespace="StudentManagement.repository.StudentRepository.java">
 
   <!-- 受講生の全体検索 -->
-<select id="search" resultType="StudentManagement.data.Student">
-  SELECT *
-  FROM students
-</select>
+  <select id="search" resultType="StudentManagement.data.Student">
+    SELECT *
+    FROM students
+  </select>
 
   <!-- 受講生の検索 -->
   <select id="searchStudent" resultType="StudentManagement.data.Student">
@@ -30,13 +30,15 @@
 
   <!-- 受講生の新規登録 -->
   <insert id="registerStudent" parameterType="StudentManagement.data.Student" useGeneratedKeys="true" keyProperty="studentId">
-    INSERT INTO students (fullname, hurigana, nickname, email, address, age, gender, remark, is_deleted)
+    INSERT INTO
+    students (fullname, hurigana, nickname, email, address, age, gender, remark, is_deleted)
     VALUES (#{fullname}, #{hurigana}, #{nickname}, #{email}, #{address}, #{age}, #{gender}, #{remark}, false)
   </insert>
 
   <!-- 受講生コース情報の新規登録 -->
   <insert id="registerStudentCourse" parameterType="StudentManagement.data.Student" useGeneratedKeys="true" keyProperty="courseId">
-    INSERT INTO students_courses (course_id, student_id, course_name, start_date, expected_date)
+    INSERT INTO
+    students_courses (course_id, student_id, course_name, start_date, expected_date)
     VALUES (#{courseId}, #{studentId}, #{courseName}, #{startDate}, #{expectedDate})
   </insert>
 
@@ -61,4 +63,5 @@
     SET course_name = #{courseName}
     WHERE student_id = #{studentId}
   </update>
+
 </mapper>
