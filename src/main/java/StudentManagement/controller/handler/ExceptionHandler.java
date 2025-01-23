@@ -9,9 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
-/**
- * 例外処理を行います。
- */
 @ControllerAdvice
 public class ExceptionHandler {
 
