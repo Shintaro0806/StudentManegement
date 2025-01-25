@@ -131,16 +131,6 @@ public class StudentController {
     return ResponseEntity.ok("更新処理が成功しました。");
   }
 
-  /**
-   * 例外処理のテスト用のメソッドです。
-   * @param id　受講生ID
-   * @throws TestException エラーメッセージ
-   */
-  @Operation(summary = "例外処理のテスト", description = "テスト用に例外を発生させます"
-  )
-  @GetMapping("/testException/{id}")
-  public void throwTestException(@PathVariable int id) throws TestException {
-    throw new TestException("テスト用のメッセージです");
-  }
+
 }
 
