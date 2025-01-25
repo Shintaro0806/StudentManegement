@@ -34,7 +34,7 @@ public class ExceptionHandler {
     response.put("timestamp", LocalDateTime.now());
     response.put("status", HttpStatus.BAD_REQUEST.value());
     response.put("error", "Bad Request");
-    response.put("message", "IDは数値で指定してください。");
+    response.put("message", "IDは数値で指定してください");
 
     return ResponseEntity
         .status(HttpStatus.BAD_REQUEST)

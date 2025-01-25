@@ -140,7 +140,7 @@ public class StudentController {
   )
   @GetMapping("/testException/{id}")
   public void throwTestException(@PathVariable int id) throws TestException {
-    throw new TestException("テスト用のメッセージです。");
+    throw new TestException("テスト用のメッセージです");
   }
 }
 
